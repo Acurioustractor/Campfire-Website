@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import Logo from '@/components/Logo'
 import type { NavLink } from '@/types'
 
 const navigation: NavLink[] = [
@@ -23,17 +24,7 @@ export default function Header() {
       <nav className="container-custom" aria-label="Global">
         <div className="flex items-center justify-between py-4">
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">CAMPFIRE</span>
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-sunset-500 to-earth-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">C</span>
-                </div>
-                <span className="font-display font-bold text-2xl text-gray-900">
-                  CAMPFIRE
-                </span>
-              </div>
-            </Link>
+            <Logo width={50} height={50} showText={true} />
           </div>
 
           <div className="flex lg:hidden">
@@ -73,17 +64,9 @@ export default function Header() {
           <div className="fixed inset-0 z-50" />
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                <span className="sr-only">CAMPFIRE</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-sunset-500 to-earth-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">C</span>
-                  </div>
-                  <span className="font-display font-bold text-xl text-gray-900">
-                    CAMPFIRE
-                  </span>
-                </div>
-              </Link>
+              <div onClick={() => setMobileMenuOpen(false)}>
+                <Logo width={40} height={40} showText={true} />
+              </div>
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
