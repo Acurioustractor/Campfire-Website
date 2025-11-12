@@ -20,38 +20,38 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
       <nav className="container-custom" aria-label="Global">
-        <div className="flex items-center justify-between py-1">
-          <div className="flex lg:flex-1">
-            <Logo width={16} height={16} showText={false} />
+        <div className="flex items-center justify-between py-0.5">
+          <div className="flex items-center">
+            <Logo width={14} height={14} showText={false} />
           </div>
 
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="inline-flex items-center justify-center p-1 text-gray-700"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Menu className="h-6 w-6" aria-hidden="true" />
+              <Menu className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
 
-          <div className="hidden lg:flex lg:gap-x-6">
+          <div className="hidden lg:flex lg:gap-x-4 lg:items-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-xs font-semibold leading-4 text-gray-900 hover:text-sunset-600 transition-colors"
+                className="text-[10px] font-medium text-gray-900 hover:text-sunset-600"
               >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href="/refer" className="text-xs px-3 py-1 bg-gradient-to-r from-sunset-600 to-earth-700 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
+          <div className="hidden lg:flex lg:items-center">
+            <Link href="/refer" className="text-[10px] px-2 py-0.5 bg-gradient-to-r from-sunset-600 to-earth-700 text-white rounded font-medium hover:opacity-90">
               Refer Now
             </Link>
           </div>
