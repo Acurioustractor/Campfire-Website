@@ -20,86 +20,71 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <nav className="container-custom" aria-label="Global">
-        <div className="flex items-center justify-between py-0.5">
-          <div className="flex items-center">
-            <Logo width={14} height={14} showText={false} />
-          </div>
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <nav className="container-custom">
+        <div className="flex items-center justify-between h-10">
+          {/* Logo */}
+          <Logo width={14} height={14} showText={false} />
 
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-1 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Menu className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
-
-          <div className="hidden lg:flex lg:gap-x-4 lg:items-center">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-[10px] font-medium text-gray-900 hover:text-sunset-600"
+                className="text-[10px] text-gray-700 hover:text-sunset-600"
               >
                 {item.name}
               </Link>
             ))}
-          </div>
-
-          <div className="hidden lg:flex lg:items-center">
-            <Link href="/refer" className="text-[10px] px-2 py-0.5 bg-gradient-to-r from-sunset-600 to-earth-700 text-white rounded font-medium hover:opacity-90">
+            <Link
+              href="/refer"
+              className="text-[10px] px-2 py-1 bg-sunset-600 text-white rounded hover:bg-sunset-700"
+            >
               Refer Now
             </Link>
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className="lg:hidden p-1"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Menu className="h-4 w-4 text-gray-700" />
+          </button>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
-              <div onClick={() => setMobileMenuOpen(false)}>
-                <Logo width={16} height={16} showText={false} />
-              </div>
-              <button
-                type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <X className="h-6 w-6" aria-hidden="true" />
+        <div className="lg:hidden fixed inset-0 z-50">
+          <div className="fixed inset-0 bg-black/20" onClick={() => setMobileMenuOpen(false)} />
+          <div className="fixed right-0 top-0 bottom-0 w-full max-w-xs bg-white p-6">
+            <div className="flex items-center justify-between mb-6">
+              <Logo width={20} height={20} showText={false} />
+              <button onClick={() => setMobileMenuOpen(false)} className="p-2">
+                <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <Link
-                    href="/refer"
-                    className="btn-primary w-full"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Refer a Young Person
-                  </Link>
-                </div>
-              </div>
+            <div className="flex flex-col gap-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-medium text-gray-900"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/refer"
+                className="mt-4 text-center px-4 py-2 bg-sunset-600 text-white rounded font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Refer a Young Person
+              </Link>
             </div>
           </div>
         </div>
