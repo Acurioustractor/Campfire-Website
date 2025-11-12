@@ -98,7 +98,7 @@ export default function AboutPage() {
           </div>
 
           <DescriptVideo
-            url="https://share.descript.com/view/PyynfkFGD2o"
+            url="https://share.descript.com/embed/PyynfkFGD2o"
             title="Brodie's Vision for CAMPFIRE"
             description="Hear directly from Brodie about why CAMPFIRE matters and the impact of cultural connection on young people."
           />
