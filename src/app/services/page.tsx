@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Dumbbell, Tent, Heart, Users, GraduationCap, Home } from 'lucide-react'
+import PhotoGallery from '@/components/PhotoGallery'
 
 export const metadata: Metadata = {
   title: 'What We Offer | CAMPFIRE',
@@ -157,6 +159,56 @@ export default function ServicesPage() {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Services in Action - Photo Gallery */}
+      <section className="section-padding bg-gradient-to-br from-earth-100 to-sunset-50">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-display font-bold text-earth-900 mb-4">
+              CAMPFIRE in Action
+            </h2>
+            <p className="text-xl text-gray-600">
+              See our services come to life through the experiences of CAMPFIRE participants.
+            </p>
+          </div>
+
+          <PhotoGallery
+            columns={3}
+            images={[
+              {
+                src: '/images/services/fitness.jpg',
+                alt: 'Youth training at gym session',
+                caption: 'Weekly Fitness & Mentoring'
+              },
+              {
+                src: '/images/services/cultural-camp.jpg',
+                alt: 'Cultural camp activities on country',
+                caption: 'Quarterly Cultural Camps'
+              },
+              {
+                src: '/images/services/mentoring.jpg',
+                alt: '1-on-1 mentoring session',
+                caption: '1-on-1 Youth Support'
+              },
+              {
+                src: '/images/services/family-event.jpg',
+                alt: 'Family engagement activity',
+                caption: 'Family Engagement'
+              },
+              {
+                src: '/images/services/pathways.jpg',
+                alt: 'Education and work pathways support',
+                caption: 'Pathways Support'
+              },
+              {
+                src: '/images/services/community.jpg',
+                alt: 'Community connection activities',
+                caption: 'Community Connection'
+              },
+            ]}
+          />
         </div>
       </section>
 

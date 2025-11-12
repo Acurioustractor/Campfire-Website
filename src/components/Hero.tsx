@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
@@ -30,23 +31,17 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image placeholder */}
+          {/* Hero Image */}
           <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-sunset-500/20 to-earth-600/20" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-32 h-32 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <span className="text-6xl font-bold">C</span>
-                </div>
-                <p className="text-white/80 text-lg">
-                  Hero image placeholder
-                  <br />
-                  <span className="text-sm">
-                    (Youth at gym session or on-country camp)
-                  </span>
-                </p>
-              </div>
-            </div>
+            <Image
+              src="/images/hero-main.jpg"
+              alt="CAMPFIRE youth building strength through culture and connection"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
         </div>
       </div>

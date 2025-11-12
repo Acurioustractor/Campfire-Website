@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Heart, Target, Users, Award } from 'lucide-react'
 import DescriptVideo from '@/components/DescriptVideo'
-import PhotoPlaceholder from '@/components/PhotoPlaceholder'
+import PhotoGallery from '@/components/PhotoGallery'
 
 export const metadata: Metadata = {
   title: 'About CAMPFIRE | Cultural Advancement and Mentoring Program',
@@ -74,11 +75,13 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div>
-              <PhotoPlaceholder
-                title="Brodie Germaine"
-                aspectRatio="portrait"
-                caption="Professional photo at gym or on country"
+            <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/brodie.jpg"
+                alt="Brodie Germaine, CAMPFIRE Program Director"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -281,6 +284,46 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Our Journey - Photo Gallery */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-display font-bold text-earth-900 mb-4">
+              Our Journey
+            </h2>
+            <p className="text-xl text-gray-600">
+              Glimpses from CAMPFIRE's journey - building connections, celebrating culture, and creating pathways.
+            </p>
+          </div>
+
+          <PhotoGallery
+            columns={2}
+            images={[
+              {
+                src: '/images/timeline/program-launch.jpg',
+                alt: 'CAMPFIRE program launch event',
+                caption: 'Program Launch - July 2025'
+              },
+              {
+                src: '/images/timeline/first-camp.jpg',
+                alt: 'First cultural camp on country',
+                caption: 'First Cultural Camp on Country'
+              },
+              {
+                src: '/images/timeline/community-gathering.jpg',
+                alt: 'Community gathering with Elders',
+                caption: 'Community Gathering with Elders'
+              },
+              {
+                src: '/images/timeline/youth-success.jpg',
+                alt: 'Youth celebrating milestones',
+                caption: 'Celebrating Youth Achievements'
+              },
+            ]}
+          />
         </div>
       </section>
 
