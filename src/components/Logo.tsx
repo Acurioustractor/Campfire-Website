@@ -7,7 +7,7 @@ interface LogoProps {
   className?: string
   showText?: boolean
   linkToHome?: boolean
-  variant?: 'light' | 'dark' // light = dark text (default), dark = white text
+  variant?: 'light' | 'dark'
 }
 
 export default function Logo({
@@ -23,14 +23,16 @@ export default function Logo({
 
   const logoContent = (
     <div className={`flex items-center gap-3 ${className}`}>
-      <Image
-        src="/images/campfire-logo.svg"
-        alt="CAMPFIRE Logo"
-        width={width}
-        height={height}
-        priority
-        className="h-auto w-auto"
-      />
+      <div style={{ width: `${width}px`, height: `${height}px`, flexShrink: 0 }}>
+        <Image
+          src="/images/campfire-logo.svg"
+          alt="CAMPFIRE Logo"
+          width={width}
+          height={height}
+          priority
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
+      </div>
       {showText && (
         <div className="flex flex-col">
           <span className={`font-display font-bold text-xl md:text-2xl ${textColorClass} leading-tight`}>
