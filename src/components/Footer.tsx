@@ -95,7 +95,7 @@ export default function Footer() {
             <div className="text-earth-200 text-sm">
               <p>&copy; {new Date().getFullYear()} CAMPFIRE. All rights reserved.</p>
               <p className="mt-1">
-                Funded by Youth Justice Kickstarter Grant. Auspiced by A Curious Tractor.
+                Funded by Youth Justice Kickstarter Grant.
               </p>
             </div>
 

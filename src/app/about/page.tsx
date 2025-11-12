@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Heart, Target, Users, Award } from 'lucide-react'
+import DescriptVideo from '@/components/DescriptVideo'
+import PhotoPlaceholder from '@/components/PhotoPlaceholder'
 
 export const metadata: Metadata = {
   title: 'About CAMPFIRE | Cultural Advancement and Mentoring Program',
@@ -72,15 +74,49 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative h-[500px] bg-gradient-to-br from-earth-200 to-sunset-200 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-center px-4">
-                Brodie Germaine photo placeholder
-                <br />
-                <span className="text-sm">
-                  (Professional photo at gym or on country)
-                </span>
-              </p>
+            <div>
+              <PhotoPlaceholder
+                title="Brodie Germaine"
+                aspectRatio="portrait"
+                caption="Professional photo at gym or on country"
+              />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section - Hear from Brodie */}
+      <section className="section-padding bg-gradient-to-br from-earth-100 to-sunset-50">
+        <div className="container-custom max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="font-display font-bold text-earth-900 mb-4">
+              Hear from Brodie
+            </h2>
+            <p className="text-xl text-gray-600">
+              Listen to Brodie share his vision for CAMPFIRE and why cultural connection matters.
+            </p>
+          </div>
+
+          {/* Descript Video Embed - Replace the URL with your actual Descript share link */}
+          <DescriptVideo
+            url="https://share.descript.com/view/YOUR_VIDEO_ID_HERE"
+            title="Brodie's Story"
+            description="Add your Descript video share URL in src/app/about/page.tsx"
+          />
+
+          <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
+            <h4 className="font-display font-bold text-lg text-earth-900 mb-3">
+              How to Add Your Descript Video
+            </h4>
+            <ol className="list-decimal list-inside space-y-2 text-gray-600">
+              <li>Upload your video to Descript</li>
+              <li>Click "Share" and generate a shareable link</li>
+              <li>Copy the share URL</li>
+              <li>Replace <code className="bg-gray-100 px-2 py-1 rounded text-sm">YOUR_VIDEO_ID_HERE</code> in the code above</li>
+            </ol>
+            <p className="mt-4 text-sm text-gray-500">
+              File location: <code className="bg-gray-100 px-2 py-1 rounded">src/app/about/page.tsx</code> (line ~90)
+            </p>
           </div>
         </div>
       </section>
@@ -272,7 +308,7 @@ export default function AboutPage() {
               Acknowledgments
             </h2>
             <p className="text-gray-600 mb-8">
-              CAMPFIRE is funded by the Queensland Government's Youth Justice Kickstarter Grant and auspiced by A Curious Tractor. We acknowledge and thank the Traditional Owners, Elders, and community members who guide and support this program.
+              CAMPFIRE is funded by the Queensland Government's Youth Justice Kickstarter Grant. We acknowledge and thank the Traditional Owners, Elders, and community members who guide and support this program, with program support and storytelling from A Curious Tractor.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <div className="px-6 py-4 bg-white rounded-lg shadow-md">

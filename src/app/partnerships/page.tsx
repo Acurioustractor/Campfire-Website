@@ -83,7 +83,7 @@ const currentPartners = [
   },
   {
     name: 'A Curious Tractor',
-    description: 'Auspice partner and program support',
+    description: 'Program support and storytelling',
   },
   {
     name: 'Traditional Owners',
