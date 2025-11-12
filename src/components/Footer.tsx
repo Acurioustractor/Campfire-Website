@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react'
-import Logo from '@/components/Logo'
 
 const navigation = {
   about: [
@@ -26,10 +25,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* About */}
           <div className="col-span-1 lg:col-span-2">
-            <div className="mb-2">
-              <Logo width={28} height={28} showText={false} linkToHome={true} variant="dark" />
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-sunset-500 to-earth-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl">C</span>
+              </div>
+              <span className="font-display font-bold text-2xl">CAMPFIRE</span>
             </div>
-            <h3 className="font-display font-bold text-base mb-2">CAMPFIRE</h3>
             <p className="text-earth-200 mb-4 max-w-md">
               Cultural Advancement and Mentoring Program - Supporting Aboriginal and Torres Strait Islander youth in Mount Isa through culture, fitness, and community connection.
             </p>
