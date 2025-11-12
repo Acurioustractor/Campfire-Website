@@ -26,9 +26,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* About */}
           <div className="col-span-1 lg:col-span-2">
-            <div className="mb-4 -ml-2">
-              <Logo width={45} height={45} showText={true} linkToHome={true} variant="dark" />
+            <div className="mb-4">
+              <Logo width={60} height={60} showText={false} linkToHome={true} variant="dark" />
             </div>
+            <h3 className="font-display font-bold text-2xl mb-2">CAMPFIRE</h3>
             <p className="text-earth-200 mb-4 max-w-md">
               Cultural Advancement and Mentoring Program - Supporting Aboriginal and Torres Strait Islander youth in Mount Isa through culture, fitness, and community connection.
             </p>
