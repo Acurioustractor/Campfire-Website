@@ -38,12 +38,12 @@ export default function Header() {
             </button>
           </div>
 
-          <div className="hidden lg:flex lg:gap-x-8">
+          <div className="hidden lg:flex lg:gap-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900 hover:text-sunset-600 transition-colors"
+                className="text-xs font-semibold leading-4 text-gray-900 hover:text-sunset-600 transition-colors"
               >
                 {item.name}
               </Link>
@@ -51,7 +51,7 @@ export default function Header() {
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href="/refer" className="btn-primary">
+            <Link href="/refer" className="text-xs px-3 py-1 bg-gradient-to-r from-sunset-600 to-earth-700 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity">
               Refer Now
             </Link>
           </div>
