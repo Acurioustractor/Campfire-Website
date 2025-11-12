@@ -97,27 +97,11 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Descript Video Embed - Replace the URL with your actual Descript share link */}
           <DescriptVideo
-            url="https://share.descript.com/view/YOUR_VIDEO_ID_HERE"
-            title="Brodie's Story"
-            description="Add your Descript video share URL in src/app/about/page.tsx"
+            url="https://share.descript.com/view/PyynfkFGD2o"
+            title="Brodie's Vision for CAMPFIRE"
+            description="Hear directly from Brodie about why CAMPFIRE matters and the impact of cultural connection on young people."
           />
-
-          <div className="mt-8 p-6 bg-white rounded-xl shadow-md">
-            <h4 className="font-display font-bold text-lg text-earth-900 mb-3">
-              How to Add Your Descript Video
-            </h4>
-            <ol className="list-decimal list-inside space-y-2 text-gray-600">
-              <li>Upload your video to Descript</li>
-              <li>Click "Share" and generate a shareable link</li>
-              <li>Copy the share URL</li>
-              <li>Replace <code className="bg-gray-100 px-2 py-1 rounded text-sm">YOUR_VIDEO_ID_HERE</code> in the code above</li>
-            </ol>
-            <p className="mt-4 text-sm text-gray-500">
-              File location: <code className="bg-gray-100 px-2 py-1 rounded">src/app/about/page.tsx</code> (line ~90)
-            </p>
-          </div>
         </div>
       </section>
 
