@@ -1,12 +1,9 @@
 import { Client } from '@notionhq/client'
-import { NotionAPI } from 'notion-client'
 
-// Initialize Notion clients
+// Initialize Notion client
 export const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 })
-
-export const notionClient = new NotionAPI()
 
 // Types for Notion database properties
 export interface BlogPost {
@@ -159,8 +156,9 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 // Fetch page content from Notion
 export async function getPageContent(pageId: string) {
   try {
-    const recordMap = await notionClient.getPage(pageId)
-    return recordMap
+    // Simplified - returns page ID for now
+    // Full Notion page rendering can be added later with notion-to-md or similar
+    return { id: pageId }
   } catch (error) {
     console.error('Error fetching page content:', error)
     return null
