@@ -24,7 +24,7 @@ export default function Header() {
       <nav className="container-custom" aria-label="Global">
         <div className="flex items-center justify-between py-4">
           <div className="flex lg:flex-1">
-            <Logo width={50} height={50} showText={false} />
+            <Logo width={35} height={35} showText={false} />
           </div>
 
           <div className="flex lg:hidden">
@@ -65,7 +65,7 @@ export default function Header() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <div onClick={() => setMobileMenuOpen(false)}>
-                <Logo width={40} height={40} showText={false} />
+                <Logo width={30} height={30} showText={false} />
               </div>
               <button
                 type="button"
