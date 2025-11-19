@@ -9,6 +9,7 @@ const navigation: NavLink[] = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'What We Offer', href: '/services' },
+  { name: 'Gallery', href: '/gallery' },
   { name: 'Our Stories', href: '/stories' },
   { name: 'Partnerships', href: '/partnerships' },
   { name: 'Refer a Young Person', href: '/refer' },

@@ -27,32 +27,32 @@ export default function Home() {
             columns={3}
             images={[
               {
-                src: '/images/gallery/gym-session.jpg',
+                src: '/images/Gallery/20250410-IMG_4167.jpg',
                 alt: 'Youth at gym session',
                 caption: 'Weekly fitness and mentoring'
               },
               {
-                src: '/images/gallery/cultural-camp.jpg',
+                src: '/images/Gallery/IMG_2705.jpg',
                 alt: 'Cultural camp on country',
                 caption: 'Quarterly cultural camps'
               },
               {
-                src: '/images/gallery/elder-teaching.jpg',
+                src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (17 of 64).jpg',
                 alt: 'Elder sharing cultural knowledge',
                 caption: 'Elder-led teachings'
               },
               {
-                src: '/images/gallery/group-activity.jpg',
+                src: '/images/Gallery/IMG_0489.jpg',
                 alt: 'Group activity',
                 caption: 'Building community connections'
               },
               {
-                src: '/images/gallery/mentoring.jpg',
+                src: '/images/Gallery/20250710-IMG_8667 (1).jpg',
                 alt: 'Brodie mentoring youth',
                 caption: '1-on-1 support'
               },
               {
-                src: '/images/gallery/family-event.jpg',
+                src: '/images/Gallery/IMG_2818.jpg',
                 alt: 'Family engagement event',
                 caption: 'Monthly family activities'
               },

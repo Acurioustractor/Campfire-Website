@@ -303,22 +303,22 @@ export default function AboutPage() {
             columns={2}
             images={[
               {
-                src: '/images/timeline/program-launch.jpg',
-                alt: 'CAMPFIRE program launch event',
+                src: '/images/Gallery/IMG_0900.jpg',
+                alt: 'CAMPFIRE program activities',
                 caption: 'Program Launch - July 2025'
               },
               {
-                src: '/images/timeline/first-camp.jpg',
+                src: '/images/Gallery/IMG_2652.jpg',
                 alt: 'First cultural camp on country',
                 caption: 'First Cultural Camp on Country'
               },
               {
-                src: '/images/timeline/community-gathering.jpg',
+                src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
                 alt: 'Community gathering with Elders',
                 caption: 'Community Gathering with Elders'
               },
               {
-                src: '/images/timeline/youth-success.jpg',
+                src: '/images/Gallery/IMG_4557.jpg',
                 alt: 'Youth celebrating milestones',
                 caption: 'Celebrating Youth Achievements'
               },

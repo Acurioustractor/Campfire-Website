@@ -178,32 +178,32 @@ export default function ServicesPage() {
             columns={3}
             images={[
               {
-                src: '/images/services/fitness.jpg',
+                src: '/images/Gallery/20250410-IMG_4246.jpg',
                 alt: 'Youth training at gym session',
                 caption: 'Weekly Fitness & Mentoring'
               },
               {
-                src: '/images/services/cultural-camp.jpg',
+                src: '/images/Gallery/IMG_2828.jpg',
                 alt: 'Cultural camp activities on country',
                 caption: 'Quarterly Cultural Camps'
               },
               {
-                src: '/images/services/mentoring.jpg',
+                src: '/images/Gallery/20250711-IMG_8846.jpg',
                 alt: '1-on-1 mentoring session',
                 caption: '1-on-1 Youth Support'
               },
               {
-                src: '/images/services/family-event.jpg',
+                src: '/images/Gallery/IMG_0363.jpg',
                 alt: 'Family engagement activity',
                 caption: 'Family Engagement'
               },
               {
-                src: '/images/services/pathways.jpg',
+                src: '/images/Gallery/IMG_2513.jpg',
                 alt: 'Education and work pathways support',
                 caption: 'Pathways Support'
               },
               {
-                src: '/images/services/community.jpg',
+                src: '/images/Gallery/IMG_0053.jpg',
                 alt: 'Community connection activities',
                 caption: 'Community Connection'
               },

@@ -1,34 +1,25 @@
 import Link from 'next/link'
 import { ArrowRight, Calendar, Tag } from 'lucide-react'
 
-// Mock data for now - will be replaced with Notion API data
+// Latest stories - these match our actual published stories
 const stories = [
   {
-    id: '1',
-    title: 'First Cultural Camp: Connection to Country',
-    excerpt: 'Our first quarterly camp brought together youth, Elders, and Traditional Owners for three days of cultural learning on country.',
-    category: 'Camp Updates',
-    publishedDate: '2025-08-15',
-    slug: 'first-cultural-camp',
-    featuredImage: '',
-  },
-  {
-    id: '2',
-    title: "Jordan's Journey: From Struggle to Strength",
-    excerpt: 'How one young person found their path through fitness, culture, and community connection at CAMPFIRE.',
-    category: 'Youth Stories',
-    publishedDate: '2025-08-10',
-    slug: 'jordans-journey',
-    featuredImage: '',
-  },
-  {
-    id: '3',
-    title: 'Elder Voices: Why Cultural Mentoring Matters',
-    excerpt: 'Community Elders share their wisdom on the importance of passing down cultural knowledge to the next generation.',
+    id: 'brodie-journey',
+    title: 'My Journey: From Struggle to Strength',
+    excerpt: 'I\'m Brodie Germaine, a Kalkadoon man from Mount Isa. This is my story - from football scholarships to addiction, to finding healing through cultural reconnection, and now dedicating my life to supporting young people through CAMPFIRE.',
     category: 'Elder Voices',
-    publishedDate: '2025-08-05',
-    slug: 'elder-voices-cultural-mentoring',
-    featuredImage: '',
+    publishedDate: '2024-11-13',
+    slug: 'my-journey-brodie-germaine',
+    featuredImage: '/images/brodie.jpg',
+  },
+  {
+    id: 'naidoc-2024',
+    title: 'Community Comes Together: Mount Isa NAIDOC Week Celebrations',
+    excerpt: 'Every year, the Mount Isa community gathers to celebrate NAIDOC Week with a powerful march and community feed. This year, we spoke with Elders, youth workers, and community members about what NAIDOC means to them.',
+    category: 'News',
+    publishedDate: '2024-11-13',
+    slug: 'mount-isa-naidoc-week-2024',
+    featuredImage: '/images/Gallery/IMG_0900.jpg',
   },
 ]
 
@@ -57,12 +48,22 @@ export default function LatestStories() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stories.map((story) => (
             <article key={story.id} className="card group">
-              {/* Image placeholder */}
-              <div className="mb-4 h-48 bg-gradient-to-br from-earth-200 to-sunset-200 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500 text-sm text-center px-4">
-                  Story image placeholder
-                </p>
-              </div>
+              {/* Featured Image */}
+              {story.featuredImage ? (
+                <div className="mb-4 h-48 bg-gray-200 rounded-lg overflow-hidden">
+                  <img
+                    src={story.featuredImage}
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+              ) : (
+                <div className="mb-4 h-48 bg-gradient-to-br from-earth-200 to-sunset-200 rounded-lg flex items-center justify-center">
+                  <p className="text-gray-500 text-sm text-center px-4">
+                    Story image
+                  </p>
+                </div>
+              )}
 
               {/* Category and date */}
               <div className="flex items-center gap-4 mb-3 text-sm text-gray-500">

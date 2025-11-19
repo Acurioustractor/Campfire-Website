@@ -19,6 +19,30 @@ const categories = [
   { name: 'News', slug: 'news' },
 ]
 
+// Static stories (before Notion setup or alongside Notion posts)
+const staticStories = [
+  {
+    id: 'brodie-journey',
+    title: 'My Journey: From Struggle to Strength',
+    slug: 'my-journey-brodie-germaine',
+    publishedDate: '2024-11-13',
+    category: 'Elder Voices',
+    featuredImage: '/images/brodie.jpg',
+    author: 'Brodie Germaine',
+    excerpt: 'I\'m Brodie Germaine, a Kalkadoon man from Mount Isa. This is my story - from football scholarships to addiction, to finding healing through cultural reconnection, and now dedicating my life to supporting young people through CAMPFIRE.',
+  },
+  {
+    id: 'naidoc-2024',
+    title: 'Community Comes Together: Mount Isa NAIDOC Week Celebrations',
+    slug: 'mount-isa-naidoc-week-2024',
+    publishedDate: '2024-11-13',
+    category: 'News',
+    featuredImage: '/images/Gallery/IMG_0900.jpg',
+    author: 'CAMPFIRE Team',
+    excerpt: 'Every year, the Mount Isa community gathers to celebrate NAIDOC Week with a powerful march and community feed. This year, we spoke with Elders, youth workers, and community members about what NAIDOC means to them and how we\'re supporting the next generation.',
+  }
+]
+
 export default async function StoriesPage({
   searchParams,
 }: {
@@ -27,7 +51,10 @@ export default async function StoriesPage({
   const selectedCategory = searchParams.category || 'all'
 
   // Fetch stories from Notion
-  const allStories = await getBlogPosts()
+  const notionStories = await getBlogPosts()
+
+  // Combine static stories with Notion stories
+  const allStories = [...staticStories, ...notionStories]
 
   // Filter by category if specified
   const stories = selectedCategory === 'all'
@@ -80,9 +107,6 @@ export default async function StoriesPage({
             <div className="text-center py-16">
               <p className="text-xl text-gray-600">
                 No stories yet in this category. Check back soon!
-              </p>
-              <p className="text-gray-500 mt-4">
-                Stories are published from our Notion database. Make sure your Notion integration is set up correctly.
               </p>
             </div>
           ) : (
