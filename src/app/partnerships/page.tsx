@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Users, Briefcase, Heart, GraduationCap, DollarSign, Package } from 'lucide-react'
-import PhotoGallery from '@/components/PhotoGallery'
 
 export const metadata: Metadata = {
   title: 'Partnerships | CAMPFIRE',
@@ -195,41 +193,6 @@ export default function PartnershipsPage() {
               )
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Partnership in Action */}
-      <section className="section-padding bg-gradient-to-br from-earth-100 to-sunset-50">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="font-display font-bold text-earth-900 mb-4">
-              Partnerships in Action
-            </h2>
-            <p className="text-xl text-gray-600">
-              See how partners contribute to CAMPFIRE's impact in the community.
-            </p>
-          </div>
-
-          <PhotoGallery
-            columns={3}
-            images={[
-              {
-                src: '/images/partnerships/cultural-educator.jpg',
-                alt: 'Cultural educator sharing knowledge with youth',
-                caption: 'Cultural Education Partnership'
-              },
-              {
-                src: '/images/partnerships/employer-visit.jpg',
-                alt: 'Youth visiting local employer',
-                caption: 'Employment Pathways'
-              },
-              {
-                src: '/images/partnerships/community-event.jpg',
-                alt: 'Community partnership event',
-                caption: 'Community Collaboration'
-              },
-            ]}
-          />
         </div>
       </section>
 

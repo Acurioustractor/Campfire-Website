@@ -85,7 +85,7 @@ export default function ContactPage() {
                 Phone
               </h3>
               <p className="text-gray-600">
-                (Contact number to be added)
+                <a href="tel:0411388526" className="hover:text-sunset-600">0411 388 526</a>
               </p>
             </div>
 
