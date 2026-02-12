@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import dynamic from 'next/dynamic'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+
+const InlineEditor = dynamic(() => import('@/components/dev/InlineEditor'), { ssr: false })
 
 const inter = Inter({
   subsets: ['latin'],
@@ -58,6 +61,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {process.env.NODE_ENV === 'development' && <InlineEditor />}
       </body>
     </html>
   )
