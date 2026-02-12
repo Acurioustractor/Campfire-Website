@@ -3,10 +3,5 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["syd1"],
-  "env": {
-    "NOTION_API_KEY": "@notion_api_key",
-    "NOTION_BLOG_DATABASE_ID": "@notion_blog_database_id",
-    "NOTION_PAGES_DATABASE_ID": "@notion_pages_database_id"
-  }
+  "regions": ["syd1"]
 }
