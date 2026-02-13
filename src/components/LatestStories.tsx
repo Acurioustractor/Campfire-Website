@@ -20,7 +20,7 @@ const staticStories = [
     category: 'News',
     publishedDate: '2024-11-13',
     slug: 'mount-isa-naidoc-week-2024',
-    featuredImage: '/images/Gallery/IMG_0900.jpg',
+    featuredImage: '/images/Gallery/20250711-IMG_8846.jpg',
   },
 ]
 

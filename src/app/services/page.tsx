@@ -193,7 +193,7 @@ export default function ServicesPage() {
                 caption: '1-on-1 Youth Support'
               },
               {
-                src: '/images/Gallery/IMG_0363.jpg',
+                src: '/images/Gallery/20250711-IMG_8846.jpg',
                 alt: 'Family engagement activity',
                 caption: 'Family Engagement'
               },

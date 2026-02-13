@@ -303,22 +303,22 @@ export default function AboutPage() {
             columns={2}
             images={[
               {
-                src: '/images/Gallery/IMG_0900.jpg',
+                src: '/images/Gallery/20250711-IMG_8846.jpg',
                 alt: 'CAMPFIRE program activities',
                 caption: 'Program Launch - July 2025'
               },
               {
-                src: '/images/Gallery/IMG_2652.jpg',
+                src: '/images/Gallery/IMG_0986.jpg',
                 alt: 'First cultural camp on country',
                 caption: 'First Cultural Camp on Country'
               },
               {
-                src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
+                src: '/images/Gallery/IMG_7407.jpg',
                 alt: 'Community gathering with Elders',
                 caption: 'Community Gathering with Elders'
               },
               {
-                src: '/images/Gallery/IMG_4557.jpg',
+                src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
                 alt: 'Youth celebrating milestones',
                 caption: 'Celebrating Youth Achievements'
               },
@@ -336,11 +336,6 @@ export default function AboutPage() {
             </h2>
             <p className="text-gray-600 mb-8">
               CAMPFIRE is funded by the Queensland Government's Youth Justice Kickstarter Grant. We acknowledge and thank the Traditional Owners, Elders, and community members who guide and support this program, with program support and storytelling from A Curious Tractor.
-            </p>
-            <p className="text-gray-600 mb-8">
-              <Link href="/elders" className="text-sunset-600 font-semibold hover:text-sunset-700 transition-colors">
-                Meet our Elders &rarr;
-              </Link>
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <div className="px-6 py-4 bg-white rounded-lg shadow-md">

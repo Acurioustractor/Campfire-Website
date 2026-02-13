@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Community Comes Together: Mount Isa NAIDOC Week Celebrations',
     description: 'Every year, the Mount Isa community gathers to celebrate NAIDOC Week with a powerful march and community feed.',
-    images: ['/images/Gallery/IMG_0900.jpg'],
+    images: ['/images/Gallery/20250711-IMG_8846.jpg'],
   },
 }
 
@@ -55,7 +55,7 @@ export default function NAIDOCStoryPage() {
           {/* Featured Image */}
           <div className="mb-8 rounded-xl overflow-hidden">
             <img
-              src="/images/Gallery/IMG_0900.jpg"
+              src="/images/Gallery/20250711-IMG_8846.jpg"
               alt="NAIDOC Week celebrations in Mount Isa"
               className="w-full h-auto"
             />

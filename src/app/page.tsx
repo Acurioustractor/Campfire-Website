@@ -47,7 +47,7 @@ export default function Home() {
                 caption: 'Building community connections'
               },
               {
-                src: '/images/Gallery/20250409-IMG_3941.jpg',
+                src: '/images/Gallery/IMG_0900.jpg',
                 alt: 'Brodie mentoring youth',
                 caption: '1-on-1 support'
               },

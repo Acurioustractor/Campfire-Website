@@ -25,28 +25,28 @@ const programs = [
     name: 'BG Fit Gym',
     description:
       'Weekly fitness sessions at Brodie\'s gym in Mount Isa. A culturally safe space where young people build physical strength, discipline, and confidence.',
-    image: '/images/Gallery/IMG_4557.jpg',
+    image: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
     metric: '3 sessions/week',
   },
   {
     name: 'Camping on Country',
     description:
       'Quarterly cultural immersion camps led by Elders and Traditional Owners. Young people reconnect with land, language, and cultural practices.',
-    image: '/images/Gallery/20250409-IMG_3941.jpg',
+    image: '/images/Gallery/IMG_0900.jpg',
     metric: '4 camps/year',
   },
   {
     name: 'School Engagement',
     description:
       'Working with local Mount Isa schools to provide in-school mentoring, cultural education, and positive role models for students.',
-    image: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
+    image: '/images/Gallery/IMG_7407.jpg',
     metric: '500+ kids/week',
   },
   {
     name: 'NAIDOC & Community Events',
     description:
       'Leading and supporting community cultural celebrations that bring families together and strengthen cultural pride across generations.',
-    image: '/images/Gallery/IMG_0900.jpg',
+    image: '/images/Gallery/20250711-IMG_8846.jpg',
     metric: 'Annual events',
   },
   {
@@ -60,7 +60,7 @@ const programs = [
     name: 'Kickstarter Program',
     description:
       'Structured 18-month youth development program funded by Queensland\'s Youth Justice Kickstarter Grant, running July 2025 to February 2027.',
-    image: '/images/Gallery/IMG_2652.jpg',
+    image: '/images/Gallery/IMG_0986.jpg',
     metric: '18-month program',
   },
 ]

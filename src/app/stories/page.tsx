@@ -38,7 +38,7 @@ const staticStories = [
     slug: 'mount-isa-naidoc-week-2024',
     publishedDate: '2024-11-13',
     category: 'News',
-    featuredImage: '/images/Gallery/IMG_0900.jpg',
+    featuredImage: '/images/Gallery/20250711-IMG_8846.jpg',
     author: 'CAMPFIRE Team',
     excerpt: 'Every year, the Mount Isa community gathers to celebrate NAIDOC Week with a powerful march and community feed. This year, we spoke with Elders, youth workers, and community members about what NAIDOC means to them and how we\'re supporting the next generation.',
   }

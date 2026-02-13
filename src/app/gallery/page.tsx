@@ -30,7 +30,7 @@ export default function GalleryPage() {
       caption: 'Building community connections'
     },
     {
-      src: '/images/Gallery/20250409-IMG_3941.jpg',
+      src: '/images/Gallery/IMG_0900.jpg',
       alt: 'Mentoring session',
       caption: '1-on-1 youth support'
     },
@@ -55,7 +55,7 @@ export default function GalleryPage() {
       caption: 'Intensive mentoring support'
     },
     {
-      src: '/images/Gallery/IMG_0363.jpg',
+      src: '/images/Gallery/20250711-IMG_8846.jpg',
       alt: 'Community gathering',
       caption: 'Family and community events'
     },
@@ -70,22 +70,22 @@ export default function GalleryPage() {
       caption: 'Community connection activities'
     },
     {
-      src: '/images/Gallery/IMG_0900.jpg',
+      src: '/images/Gallery/20250711-IMG_8846.jpg',
       alt: 'Program launch',
       caption: 'CAMPFIRE program activities'
     },
     {
-      src: '/images/Gallery/IMG_2652.jpg',
+      src: '/images/Gallery/IMG_0986.jpg',
       alt: 'Cultural camp',
       caption: 'On-country cultural experiences'
     },
     {
-      src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
+      src: '/images/Gallery/IMG_7407.jpg',
       alt: 'Community gathering',
       caption: 'Community and Elder gatherings'
     },
     {
-      src: '/images/Gallery/IMG_4557.jpg',
+      src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
       alt: 'Youth achievements',
       caption: 'Celebrating youth milestones'
     },
@@ -95,12 +95,12 @@ export default function GalleryPage() {
       caption: 'Program activities and engagement'
     },
     {
-      src: '/images/Gallery/20250409-IMG_3941.jpg',
+      src: '/images/Gallery/IMG_0900.jpg',
       alt: 'Youth participation',
       caption: 'Active youth participation'
     },
     {
-      src: '/images/Gallery/20250409-IMG_4128.jpg',
+      src: '/images/Gallery/20250410-IMG_4246.jpg',
       alt: 'Cultural activities',
       caption: 'Cultural learning and connection'
     },
@@ -125,7 +125,7 @@ export default function GalleryPage() {
       caption: 'Youth program activities'
     },
     {
-      src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (59 of 64) (1).jpg',
+      src: '/images/Gallery/20250711-IMG_8846.jpg',
       alt: 'Mount Isa community',
       caption: 'Mount Isa community engagement'
     },
@@ -180,7 +180,7 @@ export default function GalleryPage() {
       caption: 'On-country cultural camps'
     },
     {
-      src: '/images/Gallery/IMG_2718.jpg',
+      src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (31 of 64).jpg',
       alt: 'Youth participation',
       caption: 'Active youth participation'
     },
