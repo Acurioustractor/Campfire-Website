@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Calendar, Tag, ArrowRight } from 'lucide-react'
 import { getBlogPosts } from '@/lib/notion'
+import { getELStories } from '@/lib/empathy-ledger'
 
 export const metadata: Metadata = {
   title: 'Our Stories | CAMPFIRE',
@@ -50,11 +51,26 @@ export default async function StoriesPage({
 }) {
   const selectedCategory = searchParams.category || 'all'
 
-  // Fetch stories from Notion
-  const notionStories = await getBlogPosts()
+  // Fetch stories from Notion and Empathy Ledger
+  const [notionStories, elStories] = await Promise.all([
+    getBlogPosts(),
+    getELStories(),
+  ])
 
-  // Combine static stories with Notion stories
-  const allStories = [...staticStories, ...notionStories]
+  // Map EL stories to the same shape as static/Notion stories
+  const mappedELStories = elStories.map(s => ({
+    id: s.id,
+    title: s.title,
+    slug: s.id, // EL stories don't have slugs — use id
+    publishedDate: s.publishedAt,
+    category: s.themes[0]?.name || 'Community',
+    featuredImage: '',
+    author: s.authorName,
+    excerpt: s.summary,
+  }))
+
+  // Combine: static first, then Notion, then EL
+  const allStories = [...staticStories, ...notionStories, ...mappedELStories]
 
   // Filter by category if specified
   const stories = selectedCategory === 'all'

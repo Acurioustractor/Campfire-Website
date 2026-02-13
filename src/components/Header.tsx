@@ -6,13 +6,11 @@ import { Menu, X } from 'lucide-react'
 import type { NavLink } from '@/types'
 
 const navigation: NavLink[] = [
-  { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'What We Offer', href: '/services' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Our Stories', href: '/stories' },
-  { name: 'Partnerships', href: '/partnerships' },
-  { name: 'Refer a Young Person', href: '/refer' },
+  { name: 'Impact', href: '/impact' },
   { name: 'Contact', href: '/contact' },
 ]
 

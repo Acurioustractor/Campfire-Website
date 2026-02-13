@@ -337,6 +337,11 @@ export default function AboutPage() {
             <p className="text-gray-600 mb-8">
               CAMPFIRE is funded by the Queensland Government's Youth Justice Kickstarter Grant. We acknowledge and thank the Traditional Owners, Elders, and community members who guide and support this program, with program support and storytelling from A Curious Tractor.
             </p>
+            <p className="text-gray-600 mb-8">
+              <Link href="/elders" className="text-sunset-600 font-semibold hover:text-sunset-700 transition-colors">
+                Meet our Elders &rarr;
+              </Link>
+            </p>
             <div className="flex flex-wrap justify-center gap-6">
               <div className="px-6 py-4 bg-white rounded-lg shadow-md">
                 <p className="font-semibold text-earth-900">Youth Justice Kickstarter</p>

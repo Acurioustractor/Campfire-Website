@@ -25,12 +25,12 @@ export default function GalleryPage() {
       caption: 'Elder-led cultural teachings'
     },
     {
-      src: '/images/Gallery/IMG_0489.jpg',
+      src: '/images/Gallery/IMG_3611.jpg',
       alt: 'Group activities',
       caption: 'Building community connections'
     },
     {
-      src: '/images/Gallery/20250710-IMG_8667 (1).jpg',
+      src: '/images/Gallery/20250409-IMG_3941.jpg',
       alt: 'Mentoring session',
       caption: '1-on-1 youth support'
     },
@@ -140,7 +140,7 @@ export default function GalleryPage() {
       caption: 'Supporting young people'
     },
     {
-      src: '/images/Gallery/IMG_0359.jpg',
+      src: '/images/Gallery/IMG_3611.jpg',
       alt: 'Community activities',
       caption: 'Community engagement activities'
     },

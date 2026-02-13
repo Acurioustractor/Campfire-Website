@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { ArrowRight, Calendar, Tag } from 'lucide-react'
+import { getELStories } from '@/lib/empathy-ledger'
 
-// Latest stories - these match our actual published stories
-const stories = [
+// Static fallback stories
+const staticStories = [
   {
     id: 'brodie-journey',
     title: 'My Journey: From Struggle to Strength',
@@ -23,7 +24,19 @@ const stories = [
   },
 ]
 
-export default function LatestStories() {
+export default async function LatestStories() {
+  const elStories = await getELStories()
+  const mappedEL = elStories.slice(0, 3).map(s => ({
+    id: s.id,
+    title: s.title,
+    excerpt: s.summary,
+    category: s.themes[0]?.name || 'Community',
+    publishedDate: s.publishedAt,
+    slug: s.id,
+    featuredImage: '',
+  }))
+
+  const stories = [...staticStories, ...mappedEL].slice(0, 3)
   return (
     <section className="section-padding bg-earth-50">
       <div className="container-custom">

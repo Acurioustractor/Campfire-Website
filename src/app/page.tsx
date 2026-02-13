@@ -42,12 +42,12 @@ export default function Home() {
                 caption: 'Elder-led teachings'
               },
               {
-                src: '/images/Gallery/IMG_0489.jpg',
+                src: '/images/Gallery/IMG_3611.jpg',
                 alt: 'Group activity',
                 caption: 'Building community connections'
               },
               {
-                src: '/images/Gallery/20250710-IMG_8667 (1).jpg',
+                src: '/images/Gallery/20250409-IMG_3941.jpg',
                 alt: 'Brodie mentoring youth',
                 caption: '1-on-1 support'
               },
