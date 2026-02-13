@@ -193,7 +193,7 @@ export default function ServicesPage() {
                 caption: '1-on-1 Youth Support'
               },
               {
-                src: '/images/Gallery/20250711-IMG_8846.jpg',
+                src: '/images/Gallery/Confit_Mount_Isa_Day_1_Morning (17 of 64).jpg',
                 alt: 'Family engagement activity',
                 caption: 'Family Engagement'
               },

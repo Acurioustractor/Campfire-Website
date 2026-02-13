@@ -14,7 +14,6 @@ const ROUTE_TO_FILE: Record<string, string> = {
   '/partnerships': 'src/app/partnerships/page.tsx',
   '/contact': 'src/app/contact/page.tsx',
   '/refer': 'src/app/refer/page.tsx',
-  '/elders': 'src/app/elders/page.tsx',
   '/impact': 'src/app/impact/page.tsx',
 }
 

@@ -237,7 +237,7 @@ export default function ReferPage() {
           </p>
           <div className="space-y-2">
             <p className="text-lg">
-              <strong>Phone:</strong> (Contact number to be added)
+              <strong>Phone:</strong> <a href="tel:+61411388526" className="underline">0411 388 526</a>
             </p>
             <p className="text-lg">
               <strong>Email:</strong> info@campfire.org.au

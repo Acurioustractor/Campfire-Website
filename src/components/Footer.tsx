@@ -12,10 +12,6 @@ const navigation = {
     { name: 'Partnerships', href: '/partnerships' },
     { name: 'Contact Us', href: '/contact' },
   ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-  ],
 }
 
 export default function Footer() {
@@ -41,8 +37,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-earth-200">
                 <Phone className="h-5 w-5" />
-                <a href="tel:+61000000000" className="hover:text-white transition-colors">
-                  (Contact number to be added)
+                <a href="tel:+61411388526" className="hover:text-white transition-colors">
+                  0411 388 526
                 </a>
               </div>
               <div className="flex items-center space-x-2 text-earth-200">
@@ -102,7 +98,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex space-x-6">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/BGFitMountIsa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-earth-200 hover:text-white transition-colors"
@@ -111,7 +107,7 @@ export default function Footer() {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/bgfit_mountisa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-earth-200 hover:text-white transition-colors"
