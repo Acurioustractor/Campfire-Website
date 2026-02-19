@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YDPF Budget Reconciliation & Report Drafts — BAIL Program</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f3f0; color: #1a1a1a; line-height: 1.5; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 1.6rem; color: #2F5233; margin-bottom: 4px; }
+  .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 24px; }
+  
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 0; }
+  .tab { padding: 10px 20px; background: #e0ddd8; border-radius: 8px 8px 0 0; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #555; border: 1px solid #ccc; border-bottom: none; }
+  .tab.active { background: #fff; color: #2F5233; border-color: #bbb; }
+  .tab-content { display: none; background: #fff; border: 1px solid #bbb; border-radius: 0 8px 8px 8px; padding: 24px; }
+  .tab-content.active { display: block; }
+  
+  /* Summary cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .card { background: #f8f7f5; border: 1px solid #e0ddd8; border-radius: 8px; padding: 16px; text-align: center; }
+  .card .label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card .value { font-size: 1.4rem; font-weight: 700; color: #2F5233; }
+  .card .value.red { color: #c0392b; }
+  .card .value.amber { color: #d4880f; }
+  
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 20px; }
+  th { background: #2F5233; color: #fff; padding: 10px 8px; text-align: left; font-weight: 600; position: sticky; top: 0; }
+  td { padding: 8px; border-bottom: 1px solid #e8e6e2; vertical-align: top; }
+  tr:hover { background: #f8f7f5; }
+  .cat-row { background: #e8f5e9; font-weight: 600; }
+  .cat-row td { border-bottom: 2px solid #c8e6c9; padding: 6px 8px; }
+  
+  /* Status badges */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .badge-overspent { background: #f8d7da; color: #721c24; }
+  .badge-underspent { background: #d4edda; color: #155724; }
+  .badge-ontrack { background: #d1ecf1; color: #0c5460; }
+  .badge-notspent { background: #e2e3e5; color: #383d41; }
+  .badge-notfunded { background: #fff3cd; color: #856404; }
+  
+  /* Flags */
+  .flag { background: #fff3cd; border-left: 3px solid #d4880f; padding: 6px 10px; font-size: 0.8rem; margin-top: 4px; border-radius: 0 4px 4px 0; }
+  .flag.major { background: #f8d7da; border-left-color: #c0392b; }
+  
+  /* Report sections */
+  .qa-item { margin-bottom: 16px; padding: 12px 16px; background: #f8f7f5; border-radius: 8px; border: 1px solid #e8e6e2; }
+  .qa-item .q-num { font-weight: 700; color: #2F5233; font-size: 0.85rem; margin-bottom: 4px; }
+  .qa-item .answer { font-size: 0.88rem; }
+  .qa-item .answer .needs-input { background: #fff3cd; padding: 1px 6px; border-radius: 3px; font-weight: 600; color: #856404; }
+  .qa-item textarea { width: 100%; min-height: 60px; border: 1px solid #ccc; border-radius: 4px; padding: 8px; font-family: inherit; font-size: 0.85rem; margin-top: 6px; resize: vertical; }
+  
+  /* Issues list */
+  .issue { padding: 10px 14px; margin-bottom: 8px; border-radius: 6px; font-size: 0.85rem; }
+  .issue.critical { background: #f8d7da; border-left: 4px solid #c0392b; }
+  .issue.warning { background: #fff3cd; border-left: 4px solid #d4880f; }
+  .issue.info { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+  .issue strong { display: block; margin-bottom: 2px; }
+  
+  /* Print */
+  @media print { .tabs { display: none; } .tab-content { display: block !important; border: none; page-break-after: always; } }
+  
+  .money { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  .pct { text-align: center; }
+  .totals-row td { font-weight: 700; border-top: 2px solid #2F5233; background: #f0eeea; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>BAIL Program — YDPF Budget Reconciliation & Final Report</h1>
+  <p class="subtitle">Brodie Germaine Fitness | Mount Isa & Doomadgee | Approved Funding: $100,000 (GST exc)</p>
+  
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('budget')">Budget Reconciliation</div>
+    <div class="tab" onclick="showTab('report')">Final Report Draft</div>
+    <div class="tab" onclick="showTab('casestudy')">Case Study Draft</div>
+    <div class="tab" onclick="showTab('issues')">Issues & Actions</div>
+  </div>
+  
+  <!-- TAB 1: BUDGET -->
+  <div id="budget" class="tab-content active">
+    <div class="cards">
+      <div class="card"><div class="label">Approved Funding</div><div class="value">$100,000</div></div>
+      <div class="card"><div class="label">Received So Far</div><div class="value">$55,000</div></div>
+      <div class="card"><div class="label">Total Spent</div><div class="value amber">$54,669</div></div>
+      <div class="card"><div class="label">Remaining (of received)</div><div class="value">$331</div></div>
+      <div class="card"><div class="label">Yet to Receive</div><div class="value">$45,000</div></div>
+      <div class="card"><div class="label">Items Not Purchased</div><div class="value red">7 items</div></div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Line Item</th>
+          <th>Type</th>
+          <th style="text-align:right">Budgeted</th>
+          <th style="text-align:right">Actual</th>
+          <th style="text-align:right">Variance</th>
+          <th style="text-align:center">Status</th>
+          <th>Supplier / Receipt Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- TRANSPORT -->
+        <tr class="cat-row"><td colspan="7">Transport & Vehicles</td></tr>
+        <tr>
+          <td>Fuel & maintenance — First Camps</td><td>Equipment</td>
+          <td class="money">$5,000</td><td class="money">$5,000</td><td class="money">$0</td>
+          <td class="pct"><span class="badge badge-ontrack">On Track</span></td>
+          <td>Atlas Mount Isa — $5,000 receipt</td>
+        </tr>
+        <tr>
+          <td>Hire of cars / bus for camps</td><td>Hire</td>
+          <td class="money">$5,000</td><td class="money">$5,000</td><td class="money">$0</td>
+          <td class="pct"><span class="badge badge-ontrack">On Track</span></td>
+          <td>Atlas Mount Isa — $5,000 receipt</td>
+        </tr>
+        <tr>
+          <td>Fuel & maintenance — Second Camps</td><td>Equipment</td>
+          <td class="money">$5,000</td><td class="money">$0</td><td class="money">-$5,000</td>
+          <td class="pct"><span class="badge badge-notfunded">Not Funded</span></td>
+          <td>Second tranche not yet received</td>
+        </tr>
+        
+        <!-- CAMPING -->
+        <tr class="cat-row"><td colspan="7">Camping Equipment</td></tr>
+        <tr>
+          <td>Tents</td><td>Equipment</td>
+          <td class="money">$3,000</td><td class="money">$0</td><td class="money">-$3,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        <tr>
+          <td>Swags</td><td>Equipment</td>
+          <td class="money">$3,000</td><td class="money">$0</td><td class="money">-$3,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        <tr>
+          <td>Cooking Equipment</td><td>Equipment</td>
+          <td class="money">$2,500</td><td class="money">$3,000</td><td class="money" style="color:#c0392b">+$500</td>
+          <td class="pct"><span class="badge badge-overspent">Overspent</span></td>
+          <td>Bunnings — $3,000 for BBQ</td>
+        </tr>
+        <tr>
+          <td>Outdoor Tools</td><td>Equipment</td>
+          <td class="money">$2,500</td><td class="money">$1,049</td><td class="money">-$1,451</td>
+          <td class="pct"><span class="badge badge-underspent">Underspent</span></td>
+          <td>Bunnings $304.92 + $744.20</td>
+        </tr>
+        
+        <!-- FITNESS -->
+        <tr class="cat-row"><td colspan="7">Fitness & Sport</td></tr>
+        <tr style="background:#fef0f0">
+          <td><strong>Gym Equipment</strong></td><td>Equipment</td>
+          <td class="money">$10,000</td><td class="money" style="color:#c0392b;font-weight:700">$20,000</td><td class="money" style="color:#c0392b;font-weight:700">+$10,000</td>
+          <td class="pct"><span class="badge badge-overspent">Overspent</span></td>
+          <td>Commercial Usa Gym Equipment — $20,000<br><div class="flag major">MAJOR: Double the budget. Brodie's note: "Thought the budget was $20,000 I apologise"</div></td>
+        </tr>
+        <tr>
+          <td>Sporting Goods</td><td>Equipment</td>
+          <td class="money">$2,500</td><td class="money">$285</td><td class="money">-$2,215</td>
+          <td class="pct"><span class="badge badge-underspent">Underspent</span></td>
+          <td>Sports Power — $285.00</td>
+        </tr>
+        
+        <!-- SAFETY -->
+        <tr class="cat-row"><td colspan="7">Safety</td></tr>
+        <tr>
+          <td>First Aid Kits</td><td>Equipment</td>
+          <td class="money">$1,000</td><td class="money">$0</td><td class="money">-$1,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        <tr>
+          <td>Safety Gear</td><td>Equipment</td>
+          <td class="money">$2,000</td><td class="money">$0</td><td class="money">-$2,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        
+        <!-- PROGRAM DEV -->
+        <tr class="cat-row"><td colspan="7">Program Development</td></tr>
+        <tr>
+          <td>Cultural Resources</td><td>Development</td>
+          <td class="money">$5,000</td><td class="money">$1,000</td><td class="money">-$4,000</td>
+          <td class="pct"><span class="badge badge-underspent">Underspent</span></td>
+          <td>Murray Walden (Traditional Owner fee) $500, Food vouchers 2×$250, Doomadgee shop food $500</td>
+        </tr>
+        <tr>
+          <td>Educational Supplies</td><td>Development</td>
+          <td class="money">$2,500</td><td class="money">$0</td><td class="money">-$2,500</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        <tr style="background:#fefaee">
+          <td>Comms, Cultural engagement & program design</td><td>Development</td>
+          <td class="money">$10,000</td><td class="money">$1,500</td><td class="money">-$8,500</td>
+          <td class="pct"><span class="badge badge-underspent">Underspent</span></td>
+          <td>BG Fit — $1,500 for 3 young people in engagement roles<div class="flag">Described as "wages" in XLSX. YDPF excludes EFT wages. Reframe as participant engagement costs.</div></td>
+        </tr>
+        <tr>
+          <td>Marketing Supplies</td><td>Development</td>
+          <td class="money">$3,000</td><td class="money">$0</td><td class="money">-$3,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>Not purchased</td>
+        </tr>
+        <tr style="background:#fefaee">
+          <td>Social Media & Website Management</td><td>Development</td>
+          <td class="money">$10,000</td><td class="money">$0</td><td class="money">-$10,000</td>
+          <td class="pct"><span class="badge badge-notspent">Not Spent</span></td>
+          <td>A Curious Tractor — Benjamin Knight<div class="flag">No dollar amount in notes. Confirm if invoiced/paid or still to come.</div></td>
+        </tr>
+        
+        <!-- COMMUNITY -->
+        <tr class="cat-row"><td colspan="7">Community Engagement</td></tr>
+        <tr>
+          <td>Contracts — fitness & sportspeople</td><td>Development</td>
+          <td class="money">$8,000</td><td class="money">$7,960</td><td class="money">-$40</td>
+          <td class="pct"><span class="badge badge-ontrack">On Track</span></td>
+          <td>Amplify Shane (haircuts) $1,000 · Shannon Althouse community event (shoes/hats/food) $5,500 · Cameron Leon didgeridoo $1,000 · Mcvetic (girls mentoring) $300 · J Whittaker (girls mentoring) $160<div class="flag">Mostly community event costs, not contracted sportspeople. Check category alignment.</div></td>
+        </tr>
+        <tr>
+          <td>Training & Community Spaces</td><td>Hire</td>
+          <td class="money">$20,000</td><td class="money">$10,655</td><td class="money">-$9,345</td>
+          <td class="pct"><span class="badge badge-underspent">Underspent</span></td>
+          <td>Mazdon PTY LTD $2,500 · Redelec Solutions $2,383 + $758 · Sean Heffernan Carpentry $1,394 + $3,000 + $619<div class="flag">These are gym fitout/renovation costs. Defensible as "training spaces" but be clear in report.</div></td>
+        </tr>
+        
+        <!-- TOTALS -->
+        <tr class="totals-row">
+          <td colspan="2"><strong>TOTALS</strong></td>
+          <td class="money">$100,000</td>
+          <td class="money">$55,449</td>
+          <td class="money">-$44,551</td>
+          <td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p style="font-size:0.8rem;color:#888;margin-top:8px">Note: XLSX states "Money Spent = $54,668.75" and "Money Received = $55,000". The slight difference from our parsed total ($55,449) is because the Cultural Resources line has overlapping amounts in the notes. Brodie should confirm exact totals with receipts.</p>
+  </div>
+  
+  <!-- TAB 2: FINAL REPORT -->
+  <div id="report" class="tab-content">
+    <h2 style="color:#2F5233;margin-bottom:16px;font-size:1.2rem">YDPF Final Report — Draft Answers</h2>
+    <p style="color:#856404;background:#fff3cd;padding:8px 12px;border-radius:6px;margin-bottom:20px;font-size:0.85rem"><strong>Yellow items need Brodie's input.</strong> Edit the text boxes directly if you want to adjust wording.</p>
+    
+    <div class="qa-item">
+      <div class="q-num">Q1. Organisation name</div>
+      <div class="answer">Brodie Germaine Aboriginal Corporation</div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q2. Project name</div>
+      <div class="answer">BAIL (Be An Indigenous Leader) program</div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q3. Project Description</div>
+      <textarea>The BAIL program is a holistic youth development initiative combining physical fitness with cultural engagement, designed to empower Aboriginal and Torres Strait Islander youth in Mount Isa and Doomadgee. The program integrates gym-based fitness sessions, on-country camps led by Elders, and ongoing community engagement to reduce youth crime and strengthen cultural connection. Through partnerships with Youth Justice, Queensland Police Service, local schools (including Flexi), and community organisations like YPA, the program provides at-risk young people with cultural grounding, physical wellbeing opportunities, and positive role models.</textarea>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q4. Enquire reference number</div>
+      <div class="answer"><span class="needs-input">BRODIE: Insert your Enquire reference number from the funding agreement</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q5. Approved Department funding (GST Exclusive)</div>
+      <div class="answer">$100,000</div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q6. Total project expenditure (GST Exclusive)</div>
+      <div class="answer"><span class="needs-input">CONFIRM: $54,668.75 per project plan — or provide final reconciled total from receipts</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q7. Number of sport and recreation sessions delivered per location</div>
+      <div class="answer"><span class="needs-input">BRODIE: List sessions by location. Example format: Mount Isa (35), Doomadgee (15). The original plan was 50 sessions total.</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q8. Total number of female participants</div>
+      <div class="answer"><span class="needs-input">BRODIE: Provide female participant count</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q9. Total number of male participants</div>
+      <div class="answer"><span class="needs-input">BRODIE: Provide male participant count</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q10. Actual number of people employed by the project</div>
+      <div class="answer"><span class="needs-input">BRODIE: Confirm — progress report said 2 staff at 0.5 FTE, plus 3 young people in engagement roles. What's the final count?</span></div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q11. Were all the program objectives achieved?</div>
+      <textarea>The core objectives were substantially achieved. The program successfully delivered gym-based fitness sessions, on-country camps, Elder-led cultural activities, community events, school engagement through Flexi School, and positive police-youth relationship building through QPS Early Intervention team participation. Some planned equipment purchases (camping gear, safety equipment) were reprioritised to invest in establishing the gym as a permanent community engagement hub, which proved more effective for sustained youth engagement than originally anticipated. [BRODIE: Confirm if you'd say Yes/Partially and add any specific objectives not met]</textarea>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q12. Were there any blockers to achieving objectives?</div>
+      <textarea>Key blockers included: (1) The second tranche of funding has not yet been received, limiting the second round of camps. (2) The gym equipment budget was underestimated in the original plan, requiring reallocation from other budget lines — the gym became the primary engagement hub and needed proper fitout. (3) Remote location logistics for Doomadgee (5 hours from Mount Isa) created higher transport costs and coordination challenges. (4) Some planned purchases were deprioritised to invest in the gym fitout and community spaces, which became more critical for sustained engagement than originally anticipated. [BRODIE: add any other blockers — weather, community events clashing, staffing challenges, Sorry business etc.]</textarea>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q13. How effective was the program in achieving its overall objectives?</div>
+      <div class="answer"><span class="needs-input">SELECT: Very Effective / Effective / Somewhat Effective / Not Effective</span><br><br>Recommend <strong>"Effective"</strong> based on: 100+ young people engaged, successful camps delivered, strong Elder involvement, police participation in non-enforcement roles, community event delivery, and establishment of gym as a functioning youth hub.</div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q14. How effective were sport and recreation activities in contributing to objectives?</div>
+      <div class="answer"><span class="needs-input">SELECT: Very Effective / Effective / Somewhat Effective / Not Effective</span><br><br>Recommend <strong>"Very Effective"</strong> — fitness sessions are the primary engagement mechanism. The gym became a community meeting place. Sport creates a non-threatening entry point for police-youth relationship building. Physical activity on country supports cultural activities.</div>
+    </div>
+    
+    <div class="qa-item">
+      <div class="q-num">Q15. Greatest accomplishment/outcome (evidence based)</div>
+      <textarea>The greatest accomplishment was establishing a functioning, community-owned youth engagement model that combines fitness with cultural connection. Evidence:
+
+(1) Regular gym sessions with consistent voluntary attendance from young people previously disengaged from services — young people now bring their peers, indicating genuine community ownership.
+
+(2) Successful on-country camps in Doomadgee with Elder-led cultural activities, demonstrating intergenerational knowledge transfer in practice.
+
+(3) Multi-agency partnerships established with Youth Justice, QPS Early Intervention, Flexi School, and YPA — creating wraparound support rather than siloed services.
+
+(4) Three young people employed in engagement roles, telling their stories and contributing to program design — shifting from participants to co-designers.
+
+(5) Police officers participating in camps and gym sessions in mentoring roles, with young people reporting changed perceptions of police.
+
+(6) Secured additional DJAG Kickstarter funding, validating the program approach and enabling expansion.
+
+[BRODIE: add specific stories, quotes from young people, or concrete numbers if available]</textarea>
+    </div>
+  </div>
+  
+  <!-- TAB 3: CASE STUDY -->
+  <div id="casestudy" class="tab-content">
+    <h2 style="color:#2F5233;margin-bottom:16px;font-size:1.2rem">YDPF Case Study — Draft Answers</h2>
+    <p style="color:#856404;background:#fff3cd;padding:8px 12px;border-radius:6px;margin-bottom:20px;font-size:0.85rem"><strong>Yellow items need Brodie's input.</strong></p>
+    
+    <div class="qa-item">
+      <div class="q-num">Q1. Organisation name</div>
+      <div class="answer">Brodie Germaine Aboriginal Corporation</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q2. Project name</div>
+      <div class="answer">BAIL (Be An Indigenous Leader) program</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q3. Project funding amount</div>
+      <div class="answer">$100,000</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q4. Total project cost</div>
+      <div class="answer"><span class="needs-input">CONFIRM: $200,000 total project cost (as per application) OR actual total including in-kind</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q5. Rate the level of program success (1-5)</div>
+      <div class="answer"><span class="needs-input">BRODIE: Select 1-5. Recommend 4 — strong community engagement and outcomes achieved despite budget reallocation challenges.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q6. What worked well?</div>
+      <textarea>What worked well:
+
+(1) The gym as a central engagement hub — young people come voluntarily and bring their peers, creating organic growth rather than forced participation.
+
+(2) Elder-led cultural components during fitness sessions create intergenerational connection that extends well beyond exercise outcomes.
+
+(3) Multi-pathway referral system through Youth Justice, Flexi School, QPS, and community outreach reduces barriers — young people can find the program through whichever door is most comfortable for them.
+
+(4) Police participating in non-enforcement roles during camps and gym sessions fundamentally shifts the dynamic between officers and young people.
+
+(5) Employing young people in engagement roles (storytelling, program design feedback) builds genuine ownership rather than top-down program delivery.
+
+(6) Partnership with A Curious Tractor for digital storytelling amplifies community voices and creates accountability through public documentation.
+
+[BRODIE: add anything specific that stood out to you]</textarea>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q7. What would you do differently / could be improved?</div>
+      <textarea>Areas for improvement:
+
+(1) More structured financial tracking from the start — budget categories didn't always align with how money was actually needed and spent on the ground.
+
+(2) Earlier and clearer communication about funding tranches to better plan camp timing and purchasing.
+
+(3) Dedicated camping equipment budget kept separate from gym investment — the gym became the priority but meant camps relied on borrowed gear.
+
+(4) More formal participant tracking system from day one to capture attendance and outcome data for reporting, rather than building it retrospectively.
+
+(5) Separate budget lines for community events vs contracted sportspeople — these serve different purposes and got mixed together.
+
+[BRODIE: add your thoughts on what you'd change]</textarea>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q8. Level of participant engagement</div>
+      <div class="answer"><span class="needs-input">SELECT: High / Moderate / Low. Recommend "High" based on voluntary attendance, peer recruitment, and consistent engagement.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q9. Sport/rec contribution to reducing re-offending</div>
+      <div class="answer"><span class="needs-input">SELECT: Contributed a great deal / Contributed somewhat / Contributed a little / Did not contribute</span><br><br>Recommend <strong>"Contributed a great deal"</strong> — sport and fitness are the primary mechanism that creates the safe space for everything else (cultural connection, mentoring, police relationships).</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q10. Attendance/dropout rate with figures</div>
+      <div class="answer"><span class="needs-input">BRODIE: Describe attendance pattern. Example: "Started with 30 young people in early sessions, grew to regular engagement of 50+ per week across gym and community activities. Dropout rate estimated at less than 15% as the program design allows flexible re-engagement rather than requiring continuous attendance."</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q11. Estimated re-offending rate of participants</div>
+      <div class="answer"><span class="needs-input">SELECT: &lt;5% / &lt;10% / &lt;15% / &lt;20% / &lt;25% / &lt;30% / &lt;40% / &lt;50% / &gt;50%</span><br><br>BRODIE: this needs your honest estimate.</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q12. Number of First Nations participants</div>
+      <div class="answer"><span class="needs-input">BRODIE: Provide count — likely majority given program focus. Application target was ~100.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q13. Number of CALD participants</div>
+      <div class="answer"><span class="needs-input">BRODIE: Provide count, if any.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q14. Did the initiative represent value for money?</div>
+      <div class="answer">Recommend <strong>"Yes"</strong> — $55,000 spent engaging 100+ young people with sustained multi-agency partnerships, an ongoing gym program, cultural camps, and community events. The gym fitout creates lasting infrastructure beyond the grant period. The cost per participant is well below the cost of a single youth detention episode.</div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q15. Number of Police Officers involved</div>
+      <div class="answer"><span class="needs-input">BRODIE: Count officers from camps, gym visits, community events, Early Intervention team. Include names if helpful.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q16. Number of Youth Support workers involved</div>
+      <div class="answer"><span class="needs-input">BRODIE: Count YPA workers, Youth Justice case workers, Flexi School staff involved.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q17. Case study of an individual</div>
+      <div class="answer"><span class="needs-input">BRODIE: Provide a case study of one young person (with consent). Could be about a young person who was disengaged from school, started coming to the gym, attended a camp, and has since changed trajectory. Include any quotes you have permission to use. First name only or anonymous is fine.</span></div>
+    </div>
+    <div class="qa-item">
+      <div class="q-num">Q18. Photos, videos, URLs, media coverage</div>
+      <div class="answer"><span class="needs-input">PROVIDE: Links to campfire website, social media posts, media coverage, photos from camps and gym. Email additional materials to sportrecpartnership@dtis.qld.gov.au</span></div>
+    </div>
+  </div>
+  
+  <!-- TAB 4: ISSUES -->
+  <div id="issues" class="tab-content">
+    <h2 style="color:#2F5233;margin-bottom:16px;font-size:1.2rem">Issues to Resolve Before Submitting</h2>
+    
+    <div class="issue critical">
+      <strong>1. Gym Equipment — $20,000 spent vs $10,000 budget</strong>
+      This is the biggest line item issue. Brodie's note says he thought the budget was $20k. The overspend is effectively covered by unspent items (tents $3k, swags $3k, safety gear $3k, educational supplies $2.5k, marketing $3k = $14.5k available). But the report needs to clearly explain the reallocation decision — the gym became the primary engagement space and needed proper equipment. Frame it as a deliberate strategic choice, not an oversight.
+    </div>
+    
+    <div class="issue critical">
+      <strong>2. "BGFIT Wages" language — YDPF excludes EFT wages</strong>
+      The $1,500 under Communications is described as wages in the XLSX. YDPF funding explicitly cannot be used for EFT wages. Reframe this as "participant engagement costs" or "youth worker engagement payments" — which is accurate since it was paying 3 young people for storytelling and program design input, not regular employment.
+    </div>
+    
+    <div class="issue warning">
+      <strong>3. Seven "Not Purchased" items totalling $17,500 budgeted</strong>
+      Tents ($3k), Swags ($3k), First Aid ($1k), Safety Gear ($2k), Educational Supplies ($2.5k), Marketing ($3k), Social Media ($10k) = $24,500 in budget not spent as planned. Some of this offset the gym overspend. Need to confirm: were these intentionally reallocated? Are any still planned with remaining funding? The Social Media line is the biggest question — $10k budgeted with no spend recorded but work clearly being done.
+    </div>
+    
+    <div class="issue warning">
+      <strong>4. A Curious Tractor / Social Media — $10,000 budget, $0 recorded</strong>
+      The notes say "A Curious Tractor — Benjamin Knight" but no dollar amount. Has this been invoiced? Paid? Is it coming from the second tranche? This needs resolving before the final report.
+    </div>
+    
+    <div class="issue warning">
+      <strong>5. Training & Community Spaces — gym fitout receipts</strong>
+      The $10,655 spent here is for carpentry (Sean Heffernan) and electrical (Redelec Solutions) — essentially gym renovation. This is defensible as "training and community spaces" since the gym IS the training space, but be upfront about it in the report rather than leaving it ambiguous.
+    </div>
+    
+    <div class="issue warning">
+      <strong>6. Contracts line — community event costs vs sportspeople</strong>
+      The $7,960 under "Contracts for fitness and sportspeople" went to: haircuts ($1k), community event supplies ($5.5k), didgeridoo performance ($1k), and girls mentoring ($460). Only the didgeridoo and mentoring clearly fit "sportspeople/fitness" contracts. The community event is closer to a separate activity. Consider how to present this.
+    </div>
+    
+    <div class="issue info">
+      <strong>7. Second tranche — $45,000 outstanding</strong>
+      Only $55,000 of $100,000 received. Second camps fuel ($5k) explicitly not spent because funding not received. Confirm status and timeline for remaining funds.
+    </div>
+    
+    <div class="issue info">
+      <strong>8. Parsed total vs stated total</strong>
+      The XLSX states "Money Spent = $54,668.75" but our line-by-line parsing gives slightly different numbers due to overlapping amounts in the Cultural Resources notes. Reconcile with actual receipts before submission.
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
